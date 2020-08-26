@@ -50,3 +50,9 @@
   max-width: 640px;
   text-align: left;
 }
+
+.table {
+  width: 85vw;
+  margin: 5vh 0;
+  max-width: 640px;
+}
