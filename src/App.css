@@ -1,17 +1,17 @@
 .App {
+  position: relative;
   background-color: #170312;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  /* font-size: calc(10px + 2vmin); */
-  /* color: white; */
-  /* text-align: center; */
+  color: white;
+  text-align: center;
 }
 
 .App-logo {
-  height: 10vmin;
+  height: 10vh;
   margin: 5vh;
   pointer-events: none;
 }
@@ -43,4 +43,10 @@
 .icon-author a {
   color: grey;
   text-decoration: none;
+}
+
+.sliders {
+  width: 85vw;
+  max-width: 640px;
+  text-align: left;
 }
