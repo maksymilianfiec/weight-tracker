@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import logo from './sport.svg';
 import './App.css';
 
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
   Button,
   Paper,
@@ -12,86 +13,92 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
   Typography
 } from '@material-ui/core';
 
 function App() {
-  const [sets, setSets] = useState(0);
-  const [reps, setReps] = useState(0);
+  const [reps, setReps] = useState(10);
   const [kgs, setKgs] = useState(0);
+  const [exercise, setExercise] = useState('');
   const [rows, setRows] = useState([]);
+  const exercises = [
+    'Chest press',
+    'Biceps curl',
+    'Chest fly',
+    'Standing curl',
+    'Lateral raise'
+  ];
 
-  function updateSets(e) {
-    setSets(e.target.innerText);
-    console.log(sets);
+  function updateReps(event, value) {
+    setReps(value);
   }
 
-  function updateReps(e) {
-    setReps(e.target.innerText);
-    console.log(reps);
+  function updateKgs(event, value) {
+    setKgs(value);
   }
 
-  function updateKgs(e) {
-    setKgs(e.target.innerText);
-    console.log(kgs);
+  function updateExercise(value) {
+    setExercise(value);
   }
 
-  function createData(name, sets, reps, kgs) {
-    return { name, sets, reps, kgs };
+  function createData(name, reps, kgs) {
+    return { name, reps, kgs };
   }
 
   function addToTable() {
-    setRows([...rows, createData('Chest press', sets, reps, kgs)]);
+    setRows([...rows, createData(exercise, reps, kgs)]);
+  }
+
+  function clearSliders() {
+    setExercise('');
+    setReps(10);
+    setKgs(0);
   }
 
   return (
     <div className="App">
       <img src={logo} className="App-logo" alt="logo" />
-      <Typography variant="h5" component="h1" gutterBottom>
-        Chest press
-      </Typography>
+      <Autocomplete
+        inputValue={exercise}
+        onInputChange={(event, newInputValue) => {updateExercise(newInputValue)}}
+        options={exercises}
+        freeSolo
+        style={{ width: '85%', maxWidth: 640, marginBottom: 30 }}
+        renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+      />
       <div className="sliders">
-        <Typography gutterBottom>
-            Sets
-        </Typography>
-        <Slider
-            defaultValue={3}
-            aria-labelledby="discrete-slider-small-steps"
-            step={1}
-            marks
-            min={1}
-            max={6}
-            valueLabelDisplay="on"
-            onChange={(e) => updateSets(e)}
-        />
         <Typography gutterBottom>
             Reps
         </Typography>
         <Slider
-            defaultValue={10}
+            value={reps}
             aria-labelledby="discrete-slider-small-steps"
             step={1}
             marks
             min={1}
             max={20}
             valueLabelDisplay="on"
-            onChange={(e) => updateReps(e)}
+            onChange={updateReps}
         />
         <Typography gutterBottom>
             Kgs
         </Typography>
         <Slider
-            defaultValue={25}
+            value={kgs}
             aria-labelledby="discrete-slider-small-steps"
             step={0.25}
             marks
             min={0}
             max={50}
             valueLabelDisplay="on"
-            onChange={(e) => updateKgs(e)}
+            onChange={updateKgs}
         />
       </div>
-      <Button color="primary" variant="contained" size="large" onClick={addToTable}>Log</Button>
+      <div>
+        <Button color="primary" variant="text" size="large" onClick={clearSliders}>Clear</Button>
+        <Button color="primary" variant="contained" size="large" onClick={addToTable}>Log</Button>
+      </div>
       <div className="table">
         <Typography variant="h5" component="h2" gutterBottom>
           History
@@ -102,18 +109,16 @@ function App() {
               <TableHead>
                 <TableRow>
                   <TableCell>Exercise</TableCell>
-                  <TableCell align="right">Sets</TableCell>
                   <TableCell align="right">Reps</TableCell>
                   <TableCell align="right">Kgs</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
+                {rows.map((row, index) => (
+                  <TableRow key={row.name + index}>
                     <TableCell component="th" scope="row">
                       {row.name}
                     </TableCell>
-                    <TableCell align="right">{row.sets}</TableCell>
                     <TableCell align="right">{row.reps}</TableCell>
                     <TableCell align="right">{row.kgs}</TableCell>
                   </TableRow>
