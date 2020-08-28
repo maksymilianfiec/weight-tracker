@@ -16,22 +16,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite .5s ease-in-out;
-    animation-direction: alternate;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: translate(0px, 0px);
-  }
-  to {
-    transform: translate(0px, 3vh);
-  }
-}
-
 .icon-author {
   position: absolute;
   bottom: 0;
