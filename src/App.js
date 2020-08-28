@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import logo from './sport.svg';
 
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {
   makeStyles,
   Box,
   Button,
   Grid,
+  IconButton,
   Paper,
   Slider,
   Table,
@@ -130,6 +132,7 @@ function App() {
                       <TableCell>Exercise</TableCell>
                       <TableCell align="right">Reps</TableCell>
                       <TableCell align="right">Kgs</TableCell>
+                      <TableCell align="right"></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -140,6 +143,9 @@ function App() {
                         </TableCell>
                         <TableCell align="right">{row.reps}</TableCell>
                         <TableCell align="right">{row.kgs}</TableCell>
+                        <TableCell align="right">
+                          <IconButton aria-label="delete" size='small'><DeleteIcon /></IconButton>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -159,7 +165,6 @@ function App() {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // flexGrow: 1,
     position: 'relative',
     minHeight: '100vh',
     display: 'flex',
