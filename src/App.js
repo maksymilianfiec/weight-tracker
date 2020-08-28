@@ -111,7 +111,7 @@ function App() {
               </Box>
               <Box className={classes.buttons}>
                 <Button color="primary" variant="text" size="large" onClick={clearSliders}>Clear</Button>
-                <Button color="primary" variant="contained" size="large" onClick={addToTable}>Log</Button>
+                <Button color="primary" variant="contained" size="large" onClick={addToTable} disabled={exercise ==='' ? true : false}>Log</Button>
               </Box>
             </Box>
           </Paper>
