@@ -131,9 +131,8 @@ function App() {
                   </Typography>
                   <Slider
                       value={reps}
-                      aria-labelledby="discrete-slider-small-steps"
+                      aria-labelledby="Reps slider"
                       step={1}
-                      marks
                       min={1}
                       max={20}
                       valueLabelDisplay="on"
@@ -144,9 +143,8 @@ function App() {
                   </Typography>
                   <Slider
                       value={kgs}
-                      aria-labelledby="discrete-slider-small-steps"
+                      aria-labelledby="Kgs slider"
                       step={0.25}
-                      marks
                       min={0}
                       max={50}
                       valueLabelDisplay="on"
@@ -161,7 +159,7 @@ function App() {
                   </Typography>
                   <Slider
                     value={duration}
-                    aria-labelledby="non-linear-slider"
+                    aria-labelledby="Duration slider"
                     step={15}
                     min={0}
                     max={600}
