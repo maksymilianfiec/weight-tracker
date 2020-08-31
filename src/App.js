@@ -182,7 +182,7 @@ function App() {
         <Grid item xs={12} sm={6}>
           
             <Typography variant="h5" component="h1" gutterBottom>
-              History
+              View last sets
             </Typography>
             {rows.length > 0 ?
               <TableContainer component={Paper} className={classes.historyPanel}>
