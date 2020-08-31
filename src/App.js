@@ -100,6 +100,13 @@ function App() {
     setTabValue(newValue);
   };
 
+  function getTime() {
+    const now = new Date();
+    const hours = new Date().getHours();
+    const minutes = new Date().getMinutes();
+    return hours + ':' + (minutes < 10 ? '0' + minutes : minutes);
+  }
+
   return (
     <Box className={classes.root}>
       {/* ------------------------ LOGO ------------------------ */}
@@ -190,6 +197,7 @@ function App() {
                       <TableCell>Exercise</TableCell>
                       <TableCell align="right">Set</TableCell>
                       <TableCell align="right">Kgs</TableCell>
+                      <TableCell align="right">Time</TableCell>
                       <TableCell align="right"></TableCell>
                     </TableRow>
                   </TableHead>
@@ -201,6 +209,7 @@ function App() {
                         </TableCell>
                         <TableCell align="right">{row.reps}</TableCell>
                         <TableCell align="right">{row.kgs}</TableCell>
+                        <TableCell align="right">{getTime()}</TableCell>
                         <TableCell align="right">
                           <IconButton aria-label="delete" size='small' onClick={() => deleteRow(index)}><DeleteIcon /></IconButton>
                         </TableCell>
