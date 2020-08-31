@@ -63,6 +63,10 @@ function App() {
     setKgs(0);
   }
 
+  function deleteRow(index) {
+    setRows([...rows.slice(0, index), ...rows.slice(index+1)]);
+  }
+
   return (
     <Box className={classes.root}>
       {/* ------------------------ LOGO ------------------------ */}
@@ -144,7 +148,7 @@ function App() {
                         <TableCell align="right">{row.reps}</TableCell>
                         <TableCell align="right">{row.kgs}</TableCell>
                         <TableCell align="right">
-                          <IconButton aria-label="delete" size='small'><DeleteIcon /></IconButton>
+                          <IconButton aria-label="delete" size='small' onClick={() => deleteRow(index)}><DeleteIcon /></IconButton>
                         </TableCell>
                       </TableRow>
                     ))}
